@@ -23,4 +23,4 @@ A Connect 4 game built with C# that allows players to challenge each other or co
 
 
 ## Game Screenshot
-![Connect 4 Game Screenshot](Connect4-Game/Images/Connect4Game.png) 
+![Connect 4 Game Screenshot](Images/Connect4Game.png) 
