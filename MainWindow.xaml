@@ -1,0 +1,225 @@
+﻿<Window x:Class="Connect4Game.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connect4Game"
+        mc:Ignorable="d"
+
+        Title="MainWindow" ResizeMode = "NoResize" Height="573.967" Width="800" Loaded="Window_Loaded">
+
+    <Grid x:Name="Connect4" Background="#FF99C8DC" Margin="0,0,0,-72">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="344*"/>
+            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="122*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="boardImage" HorizontalAlignment="Left" Height="355" VerticalAlignment="Top" Width="490" Source="/Images/Connect4Board.png" Margin="24,71,0,0" Grid.ColumnSpan="3" Grid.Column="3" >
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Images/Connect4Board.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Label x:Name="player1NameLbl" x:FieldModifier="public" Grid.Column="4" Content="Player Name" HorizontalAlignment="Left" Margin="1,19,0,0" VerticalAlignment="Top" Width="87" Height="26" Background="#FFEBEFF1" Foreground="#FF100404" BorderBrush="#FF130202" FontWeight="Bold"/>
+        <Label x:Name="score1Lbl" Grid.Column="4" Content="Score" Margin="103,19,181,0" VerticalAlignment="Top" RenderTransformOrigin="0.408,-0.153" Height="26">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEFF1" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+        <Label x:Name="player2NameLbl" Grid.Column="5" Content="Player Name" HorizontalAlignment="Left" Margin="49,19,0,0" VerticalAlignment="Top" Width="82" Height="26" Background="#FFEBEFF1" FontWeight="Bold"/>
+        <Label x:Name="score2Lbl" Grid.Column="4" Content="Score" HorizontalAlignment="Left" Margin="326,19,0,0" VerticalAlignment="Top" Height="26" Width="61" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnStart" Grid.Column="4" Content="Start" HorizontalAlignment="Left" Margin="135,489,0,0" VerticalAlignment="Top" Height="32" Width="94" Click="btnStart_Click" Foreground="#FF080D0E" BorderBrush="#FF1C2427" FontWeight="Bold"/>
+        <Button x:Name="btnReset" Grid.Column="4" Content="Reset" HorizontalAlignment="Left" Margin="277,490,0,0" VerticalAlignment="Top" Height="31" Width="86" Click="btnReset_Click" FontWeight="Bold" RenderTransformOrigin="0.205,0.853" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnClose" Grid.Column="5" Content="Close" HorizontalAlignment="Left" Margin="65,490,0,0" VerticalAlignment="Top" Height="31" Width="84" Click="btnClose_Click" RenderTransformOrigin="0.479,1.682" FontWeight="Bold" Grid.ColumnSpan="3"/>
+        <Button x:Name="column2btn"  Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="78,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column2btn_Click" Height="355" Width="50" Opacity="0"/>
+        <Button x:Name="column3btn" Grid.Column="4" Content="Button" HorizontalAlignment="Center" Margin="0,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column3btn_Click" Width="54" Height="355" Opacity="0"/>
+        <Button x:Name="column4btn" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="216,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column4btn_Click" Height="355" Opacity="0" Width="40"/>
+        <Button x:Name="column5btn" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="279,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column5btn_Click" Height="355" Width="45" Opacity="0"/>
+        <Button x:Name="column6btn" Grid.Column="5" Content="Button" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column6btn_Click" Height="355" Width="50" Opacity="0"/>
+        <Button x:Name="column7btn" Grid.Column="5" Content="Button" HorizontalAlignment="Left" Margin="73,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column7btn_Click" Height="355" Opacity="0" Width="40"/>
+        <Button x:Name="column1btn"  Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.366,4.295" Background="#FF99C8DC" Click="column1btn_Click" Height="355" Width="50" Opacity="0"/>
+        <Image x:Name="tokenImage1_1" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="77,134,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage0_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,75,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459" Cursor="ArrowCD"/>
+        <Image x:Name="tokenImage0_1" Grid.Column="4" HorizontalAlignment="Left" Height="55" Margin="77,74,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_2" Grid.Column="4" HorizontalAlignment="Center" Height="55" Margin="0,133,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage0_2" Grid.Column="4" HorizontalAlignment="Center" Height="54" Margin="0,74,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459" OpacityMask="Black"/>
+        <Image x:Name="tokenImage0_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,74,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage0_4" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="277,74,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage0_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="5,74,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage0_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,75,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,134,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_4" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="277,133,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="6,134,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,134,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_1" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="77,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_2" Grid.Column="4" HorizontalAlignment="Center" Height="54" Margin="0,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_4" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="277,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="6,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_1" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="77,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_2" Grid.Column="4" HorizontalAlignment="Center" Height="54" Margin="0,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_4" Grid.Column="4" HorizontalAlignment="Left" Height="55" Margin="277,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="6,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage3_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,252,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,311,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_1" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="77,311,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_2" Grid.Column="4" HorizontalAlignment="Center" Height="54" Margin="0,311,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,311,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_4" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="277,312,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="6,311,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage4_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,312,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_1" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="77,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_2" Grid.Column="4" HorizontalAlignment="Center" Height="54" Margin="0,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_3" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="209,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_4" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="277,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_5" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="6,370,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage5_6" Grid.Column="5" HorizontalAlignment="Left" Height="54" Margin="72,371,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage1_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,134,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Image x:Name="tokenImage2_0" Grid.Column="4" HorizontalAlignment="Left" Height="54" Margin="10,193,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="4.062,4.459"/>
+        <Menu x:Name="menu" Grid.ColumnSpan="3" Background="#FF457188">
+            <Button x:Name="choosePlayerButton" Content="Play with A Friend " Height="30" Width="123" FontWeight="Bold" Click="choosePlayerButton_Click"/>
+            <Button x:Name="chooseAIButton" Content="Play with AI" Height="30" Width="122" FontWeight="Bold" Click="chooseAIButton_Click"/>
+            <Label x:Name="boardSizeLabel" Content="       Board Size " Width="121" Height="30" Background="#FFDDDDDD" FontWeight="Bold" RenderTransformOrigin="2.025,16.101"/>
+            <ComboBox x:Name="chooseSizeComboBox" Width="121" Height="25" FontWeight="Bold">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Button x:Name="rulesBtn" Content="Click Me Before Starting" HorizontalAlignment="Center" VerticalAlignment="Top" Height="64" Width="121" Click="rulesBtn_Click" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.5,0.5" FontSize="10"/>
+            <Button x:Name="aboutUsBtn" Content="About Us" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="121" Click="aboutUsBtn_Click" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.5,0.5"/>
+            <Button x:Name="rankingBtn" Content="Top 10 Ranking" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="121" Click="top10RankingBtn_Click" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.5,0.5"/>
+        </Menu>
+        <Label x:Name="TimerLabel" Grid.Column="4" Content="Timer" HorizontalAlignment="Left" Margin="216,19,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
+        <Image x:Name="board6x7Img" Grid.Column="3" HorizontalAlignment="Left" Height="384" Margin="24,71,0,0" VerticalAlignment="Top" Width="280" Source="/Connect4Board6x7.png" Grid.ColumnSpan="2" />
+        <Image x:Name="board10x7Img" Grid.Column="4" HorizontalAlignment="Left" Height="375" Margin="1,71,0,0" VerticalAlignment="Top" Width="480" Source="/Connect4Board10x7.png" RenderTransformOrigin="0.105,-2.242" Grid.ColumnSpan="2"/>
+        <Image x:Name="img0_0" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="3,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img0_1" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="48,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img0_2" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="95,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img0_3" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="142,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img0_4" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="188,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img0_5" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="235,79,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_0" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="3,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img2_0" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="1,185,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img3_0" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="3,238,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img4_0" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="1,290,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img5_0" Grid.Column="4" HorizontalAlignment="Left" Height="45" Margin="1,345,0,0" VerticalAlignment="Top" Width="44"  RenderTransformOrigin="2.154,-0.015" />
+        <Image x:Name="img6_0" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="1,397,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_1" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="48,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_2" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="95,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_3" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="142,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_4" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="188,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img1_5" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="237,133,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img2_1" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="47,185,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img2_2" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="94,185,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img2_3" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="141,185,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img2_4" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="187,185,0,0" VerticalAlignment="Top" Width="44"  />
+        <Image x:Name="img2_5" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="234,185,0,0" VerticalAlignment="Top" Width="44"/>
+        <Image x:Name="img3_1" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="47,237,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img3_2" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="95,236,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img3_3" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="141,237,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img3_4" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="187,237,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img3_5" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="236,239,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img4_1" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="47,290,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img4_2" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="95,290,0,0" VerticalAlignment="Top" Width="44"  RenderTransformOrigin="0.515,0.541"/>
+        <Image x:Name="img4_3" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="141,290,0,0" VerticalAlignment="Top" Width="44"  RenderTransformOrigin="0.515,0.541" />
+        <Image x:Name="img4_4" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="188,290,0,0" VerticalAlignment="Top" Width="44"  RenderTransformOrigin="0.515,0.541" />
+        <Image x:Name="img4_5" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="236,291,0,0" VerticalAlignment="Top" Width="44"  RenderTransformOrigin="0.515,0.541" />
+        <Image x:Name="img5_1" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="48,345,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img5_2" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="95,346,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img5_3" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="143,346,0,0" VerticalAlignment="Top" Width="42" />
+        <Image x:Name="img5_4" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="190,345,0,0" VerticalAlignment="Top" Width="42" />
+        <Image x:Name="img5_5" Grid.Column="4" HorizontalAlignment="Left" Height="43" Margin="236,347,0,0" VerticalAlignment="Top" Width="42" />
+        <Image x:Name="img6_1" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="48,397,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img6_2" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="95,397,0,0" VerticalAlignment="Top" Width="44" />
+        <Image x:Name="img6_3" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="141,398,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.598,0.515" />
+        <Image x:Name="img6_4" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="189,397,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.598,0.515" />
+        <Image x:Name="img6_5" Grid.Column="4" HorizontalAlignment="Left" Height="46" Margin="237,397,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.598,0.515" />
+        <Image x:Name="img0_6" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="284,79,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img0_7" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="331,79,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img0_8" Grid.Column="5" HorizontalAlignment="Left" Height="42" Margin="39,80,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img0_9" Grid.Column="5" HorizontalAlignment="Left" Height="42" Margin="86,80,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img1_6" Grid.Column="4" Height="50" Margin="283,132,13,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509"/>
+        <Image x:Name="img1_7" Grid.Column="4" HorizontalAlignment="Left" Height="42" Margin="331,133,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img1_8" Grid.Column="5" HorizontalAlignment="Left" Height="42" Margin="39,133,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img1_9" Grid.Column="5" HorizontalAlignment="Left" Height="42" Margin="86,133,0,0" VerticalAlignment="Top" Width="43"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img2_6" Grid.Column="4" Height="52" Margin="283,186,13,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img2_7" Grid.Column="4" Height="51" Margin="331,185,108,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img2_8" Grid.Column="5" Height="42" Margin="39,186,66,0" VerticalAlignment="Top"  RenderTransformOrigin="0.597,0.557" />
+        <Image x:Name="img2_9" Grid.Column="5" Height="42" Margin="86,186,19,0" VerticalAlignment="Top"  RenderTransformOrigin="0.597,0.557" />
+        <Image x:Name="img3_6" Grid.Column="4" Height="48" Margin="284,239,12,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img3_7" Grid.Column="4" Height="55" Margin="333,239,108,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img3_8" Grid.Column="5" Height="42" Margin="38,238,65,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img3_9" Grid.Column="5" Height="42" Margin="85,238,18,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img4_6" Grid.Column="4" Height="50" Margin="280,292,14,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509"  />
+        <Image x:Name="img4_7" Grid.Column="4" Height="59" Margin="332,291,109,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img4_8" Grid.Column="5" Height="43" Margin="39,290,62,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509"  />
+        <Image x:Name="img4_9" Grid.Column="5" Height="54" Margin="85,292,18,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509"  />
+        <Image x:Name="img5_6" Grid.Column="4" Height="50" Margin="282,345,14,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509"  />
+        <Image x:Name="img5_7" Grid.Column="4" Height="50" Margin="331,344,110,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2" />
+        <Image x:Name="img5_8" Grid.Column="5" Height="43" Margin="40,345,65,0" VerticalAlignment="Top"  RenderTransformOrigin="0.567,0.509" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.548"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img5_9" Grid.Column="5" Height="43" Margin="86,345,19,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.496">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.548"/>
+                    <TranslateTransform X="0.005" Y="-0.034"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img6_6" Grid.Column="4" Height="48" Margin="284,396,12,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,0.509" />
+        <Image x:Name="img6_7" Grid.Column="4" Height="48" Margin="332,396,109,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,0.509" Grid.ColumnSpan="2"/>
+        <Image x:Name="img6_8" Grid.Column="5" Height="46" Margin="39,396,62,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,0.509"/>
+        <Image x:Name="img6_9" Grid.Column="5" Height="46" Margin="86,396,16,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,0.509"/>
+        <Button x:Name="column1Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="8,73,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column1Button_Click" Opacity="0"/>
+        <Button x:Name="column2Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="56,79,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column2Button_Click" Opacity="0"/>
+        <Button x:Name="column3Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="101,80,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column3Button_Click" Opacity="0"/>
+        <Button x:Name="column4Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="147,74,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column4Button_Click" Opacity="0"/>
+        <Button x:Name="column5Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="196,79,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column5Button_Click" Opacity="0"/>
+        <Button x:Name="column6Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="242,79,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column6Button_Click" Opacity="0"/>
+        <Button x:Name="column7Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="291,71,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column7Button_Click" Opacity="0"/>
+        <Button x:Name="column8Button" Grid.Column="4" Content="Button" HorizontalAlignment="Left" Margin="341,68,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column8Button_Click" Opacity="0" Grid.ColumnSpan="2"/>
+        <Button x:Name="column9Button" Grid.Column="5" Content="Button" HorizontalAlignment="Left" Margin="44,73,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column9Button_Click" Opacity="0"/>
+        <Button x:Name="column10Button" Grid.Column="5" Content="Button" HorizontalAlignment="Left" Margin="90,71,0,0" VerticalAlignment="Top" Height="370" Width="32" Click="column10Button_Click" Opacity="0"/>
+        <Label x:Name="player1Turnlbl" Grid.Column="4" Content="" Margin="0,44,256,0" VerticalAlignment="Top" RenderTransformOrigin="0.408,-0.153" Height="26">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEFF1" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+        <Label x:Name="player2Turnlbl" Grid.Column="5" Content="" Margin="50,44,19,0" VerticalAlignment="Top" RenderTransformOrigin="0.408,-0.153" Height="26">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFEBEFF1" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+    </Grid>
+</Window>

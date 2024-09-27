@@ -1,0 +1,17 @@
+﻿<Window x:Class="Connect4Game.PickColorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connect4Game"
+        mc:Ignorable="d"
+        Title="PickColorWindow" Height="260" Width="400" Background="#FB99C8DC">
+    <Grid>
+        <Image x:Name="redTokenImg" HorizontalAlignment="Left" Height="70" Margin="69,10,0,0" VerticalAlignment="Top" Width="78" Source="/ChipRed.png" MouseDown="ImageClickHandler" Tag="red"/>
+        <Image x:Name="yellowTokenImg" HorizontalAlignment="Left" Height="70" Margin="222,10,0,0" VerticalAlignment="Top" Width="78" Source="/ChipYellow.png" MouseDown="ImageClickHandler" Tag="yellow"/>
+        <Image x:Name="greenTokenImg" HorizontalAlignment="Left" Height="70" Margin="43,122,0,0" VerticalAlignment="Top" Width="78" Source="/ChipGreen.png" MouseDown="ImageClickHandler" Tag="green"/>
+        <Image x:Name="blueTokenImg" HorizontalAlignment="Left" Height="70" Margin="165,122,0,0" VerticalAlignment="Top" Width="78" Source="/ChipBlue.png" MouseDown="ImageClickHandler" Tag="blue"/>
+        <Image x:Name="blackTokenImg" HorizontalAlignment="Left" Height="70" Margin="291,122,0,0" VerticalAlignment="Top" Width="78" Source="/ChipBlack.png" MouseDown="ImageClickHandler" Tag="black"/>
+
+    </Grid>
+</Window>

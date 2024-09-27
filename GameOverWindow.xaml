@@ -1,0 +1,15 @@
+﻿<Window x:Class="Connect4Game.GameOverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connect4Game"
+        mc:Ignorable="d"
+        Title="GameOverWindow" Height="250" ResizeMode="NoResize" Width="400" Background="#FF99C8DC">
+    <Grid>
+        <Label x:Name="GameOverlbl" Content="Game Over. Would you like to play again?" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="254" Margin="83,0,0,0"/>
+        <Button x:Name="Nobtn" Content="No" HorizontalAlignment="Left" Margin="102,159,0,0" VerticalAlignment="Top" Height="35" Width="79" FontSize="16" Click="Nobtn_Click"/>
+        <Button x:Name="Yesbtn" Content="Yes" HorizontalAlignment="Left" Margin="234,159,0,0" VerticalAlignment="Top" Height="35" Width="80" FontSize="16" Click="Yesbtn_Click"/>
+        <TextBlock x:Name="playerwintxt" HorizontalAlignment="Left" Height="32" Margin="130,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" TextAlignment="Center" FontSize="16"/>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="Connect4Game.AboutUs"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connect4Game"
+        mc:Ignorable="d"
+        Title="About Us" Height="450" Width="800">
+    <Grid Background="#FF99C8DC">
+        <TextBox x:Name="aboutUstxt" HorizontalAlignment="Left" Margin="151,106,0,0" TextWrapping="Wrap" Text="Developers: Josiah Diester, Hunter Pasterski, Mariana Lamprea, Enkhjin Gurvanbulag. Version: 5.0 Date: 3/4/2024" VerticalAlignment="Top" Width="506" Height="210" FontSize="24"/>
+        <Button x:Name="closebtn" Content="Close" Margin="239,344,239,37" FontSize="36" Click="closebtn_Click"/>
+
+    </Grid>
+</Window>
