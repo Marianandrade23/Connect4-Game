@@ -22,3 +22,5 @@ A Connect 4 game built with C# that allows players to challenge each other or co
 4. The first player to connect four discs vertically, horizontally, or diagonally wins the game.
 
 
+## Game Screenshot
+![Connect 4 Game Screenshot](images/Connect4Game.png)
